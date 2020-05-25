@@ -10,7 +10,7 @@ user endpoints will be behind the restricted middleware, once logged in users wi
 GET         | /api/users                     | returns a list of all users                  |
 GET         | /api/users/:id                 | returns a specific user by id                |
 GET         | /api/users/:id/ailments        | returns a specific users ailments            |
-POST        | /api/users/:id/ailments        | allows user to add a new ailment             | requires __name__ and __description__
+POST        | /api/users/:id/ailments        | allows user to add a new ailment             | requires __name__  __description__ and __user_id__
 PUT         | /api/users/:id/ailments/:id    | allows user to edit their specific ailments  | 
 DELETE      | /api/users/:id/ailments/:id    | allows user to delete specific ailments      |
 
