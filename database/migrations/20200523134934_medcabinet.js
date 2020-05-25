@@ -15,7 +15,7 @@ exports.up = function(knex) {
     .createTable('ailments', tbl =>{
         tbl.increments()
         tbl.string('name', 128).notNullable()
-        tbl.string('description', 255)
+        tbl.string('description', 255).notNullable()
         tbl.integer('user_id')
             .unsigned()
             .references('id')
