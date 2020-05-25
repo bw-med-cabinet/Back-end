@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
 const Users = require('./users-model')
-const restricted = require('../auth/authenticate-middleware')
+const restricted = require('../auth/restricted-model')
 
 router.use(restricted)
 
