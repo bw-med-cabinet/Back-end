@@ -1,7 +1,8 @@
 const router = require('express').Router()
-const Users = require('../users/users-model')
-const Ailments = require('../ailments/ailments-model')
-const Recc = require('../recommendations/recc-model')
+//const Users = require('../users/users-model')
+//const Ailments = require('../ailments/ailments-model')
+//const Recc = require('./recc-model')
+//const Strains = require('../strains')
 const restricted = require('../auth/restricted-model')
 
 

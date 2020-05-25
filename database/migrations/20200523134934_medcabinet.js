@@ -14,7 +14,7 @@ exports.up = function(knex) {
     })
     .createTable('ailments', tbl =>{
         tbl.increments()
-        tbl.string('name', 128).notNullable()
+        tbl.string('ailment_name', 128).notNullable()
         tbl.string('description', 255).notNullable()
         tbl.integer('user_id')
             .unsigned()
@@ -26,7 +26,7 @@ exports.up = function(knex) {
     })
     .createTable('strains', tbl =>{
         tbl.increments()
-        tbl.string('name').notNullable().unique()
+        tbl.string('strain_name').notNullable().unique()
         tbl.string('type').notNullable()
         tbl.string('description', 255).notNullable()
         tbl.string('qualities', 128)
