@@ -27,7 +27,7 @@ DELETE | /api/ailments/:id | deletes specific ailment by id    |
 ## STRAINS
 GET    | /api/strains       | returns a list of all strains     |  
 GET    | /api/strains/:id   | returns a specific ailment by id  |  
-POST   | /api/strains       | adds a new strain                 | reguires __name__ __type__ and __description__  
+POST   | /api/strains       | adds a new strain                 | requires __name__ __type__ and __description__  
 DELETE | /api/strains/:id   | deletes a strain                  |  
 
 ## RECOMMENDATIONS
