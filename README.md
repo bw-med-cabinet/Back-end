@@ -7,7 +7,7 @@ Type | Endpoint | What it does | Required
 POST | /api/auth/register | registers a user     | requires a __username__ and password  
 POST | /api/auth/login    | logs a user in       | requires a __username__ and __password__ returns an authorized token.  
 
-following endpoints will be behind the restricted middleware, once logged in following information will be accessible
+#### The following endpoints will be behind the restricted middleware once authorized the following information will be accessible
 
 ## USERS
 Type | Endpoint | What it does | Required
@@ -44,4 +44,4 @@ Type | Endpoint | What it does | Required
 -----|---------------------------------------|----------------------------------|-------
 GET | /api/recommendations/                  | returns all recommended options
 GET | /api/recommendations/ailment/:id       | returns strains based on ailment id  
-GET | /api/recommendatoins/strain/:id        | returns list of ailments specific strain is good for
+GET | /api/recommendations/strain/:id        | returns list of ailments that a specific strain is good for
