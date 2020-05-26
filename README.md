@@ -3,7 +3,7 @@
 
 ## REGISTER AND LOGIN
 POST | /api/auth/register | registers a user     | requires a __username__ and password  
-POST | /api/auth/login    | logs a user in       | requires a __username__ and __password__ returns a authorized token.  
+POST | /api/auth/login    | logs a user in       | requires a __username__ and __password__ returns an authorized token.  
 
 ## USERS
 user endpoints will be behind the restricted middleware, once logged in users will be able to access info.
@@ -31,5 +31,6 @@ POST   | /api/strains       | adds a new strain                 | requires __nam
 DELETE | /api/strains/:id   | deletes a strain                  |  
 
 ## RECOMMENDATIONS
-GET | /api/recommendations       | returns all strain recommendations for a users ailments  
-GET | /api/recommendatoins/:id   | returns specific strain recommendation for a users specific ailment
+GET | /api/recommendations/                  | returns all recommended options
+GET | /api/recommendations/ailment/:id       | returns strains based on ailment id  
+GET | /api/recommendatoins/strain/:id        | returns list of ailments specific strain is good for
