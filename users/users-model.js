@@ -23,9 +23,9 @@ function add(user){
     })
 }
 
-function findBy(id){
-    console.log(id)
-    return db('users').where({id})
+function findBy(filter){
+    //console.log(id)
+    return db('users').where(filter)
 }
 
 function getUsersAilments(user_id){

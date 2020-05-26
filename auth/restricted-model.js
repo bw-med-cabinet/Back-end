@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     jwt.verify(token, secret, (error, decodedToken)=>{
       if(error){
 
-        res.status(401).json({ you: 'shall not pass!' });
+        res.status(401).json({ you: 'need to have proper authentication!' });
       }else{
         req.jwt = decodedToken
         next();
