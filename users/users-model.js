@@ -7,7 +7,9 @@ module.exports={
     getUsersAilments,
     addAilment,
     deleteUsersAilment,
-    updateUsersAilment
+    updateUsersAilment,
+    deleteUser,
+    updateUser
 }
 
 function find(){
@@ -28,8 +30,9 @@ function findBy(id){
 
 function getUsersAilments(user_id){
     return db('ailments')
-        .select( 'users.username', 'ailments.name', 'ailments.description','ailments.id')
+        .select( 'users.username as Username', 'ailments.name as User\'s Ailment', 'ailments.description as Ailment Description','ailments.id')
         .join('users',  'ailments.user_id','users.id',)
+        .orderBy('ailments.id')
         .where({user_id})
 }
 
@@ -47,7 +50,18 @@ function deleteUsersAilment(id){
             .del()
 }
 
+function deleteUser(id){
+    return db('users')
+    .where('id', id)
+    .del()
+}
+
 function updateUsersAilment(changes, id){
         return db('ailments')
                 .where({id}).update(changes)
+}
+
+function updateUser(changes, id){
+    return db('users')
+    .where({id}).update(changes)
 }

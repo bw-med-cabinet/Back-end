@@ -85,4 +85,35 @@ router.delete('/:id/ailments/:id', (req, res) =>{
         })
 })
 
+router.put('/:id', (req, res) =>{
+    const {id} = req.params
+    const changes = req.body
+    Users.findBy(id)
+    .then(updates =>{
+        if(updates){
+            Users.updateUser(changes, id)
+                .then(updatedUser =>{
+                    res.json(updatedUser)
+                })
+        }else{
+            res.status(404).json({message:'could not update this user by id'})
+        }
+    }).catch(err =>{
+        res.status(500).json({message: err.message})
+    })
+})
+
+router.delete('/:id', (req, res)=>{
+    Users.deleteUser(req.params.id)
+    .then(removed =>{
+        if(removed > 0){
+            res.status(200).json({removed: removed})
+        }else{
+            res.status(500).json({
+                message: 'This user failed to delete'
+            })
+        }
+    })
+})
+
 module.exports = router;
