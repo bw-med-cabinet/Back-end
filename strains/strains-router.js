@@ -3,7 +3,7 @@ const Strains = require('./strains-model')
 const restricted = require('../auth/restricted-model')
 
 
-router.use(restricted)
+//router.use(restricted)
 
 router.get('/', (req,res)=>{
     Strains.getStrains()
@@ -18,17 +18,18 @@ router.get('/', (req,res)=>{
 router.get('/:id', (req, res)=>{
     Strains.getStrainsById(req.params.id)
     .then(strains =>{
-        if(strains){
+        if(strains.length){
             res.status(200).json(strains)
+        
         }else{
-            res.status(400).json({message: 'Failed to retrieve this strain'})
+            res.status(400).json({message: 'Failed to retrieve this strain, check to make sure id associated with it exists'})
         }
     }).catch(err =>{
         res.status(500).json({message: err.message})
     })
 })
 
-router.post('/', (req,res)=>{
+router.post('/', restricted, (req,res)=>{
     const strainData = req.body
     Strains.addStrain(strainData)
         .then(strains =>{
@@ -40,7 +41,7 @@ router.post('/', (req,res)=>{
     
 })
 
-router.delete('/:id', (req, res)=>{
+router.delete('/:id', restricted, (req, res)=>{
     Strains.deleteStrain(req.params.id)
     .then(removed =>{
         if(removed >0){

@@ -9,7 +9,7 @@ exports.up = function(knex) {
         tbl.string('password', 269)
             .notNullable()
         tbl.string('bio', 255)
-        tbl.specificType('ailment_id', 'integer ARRAY')
+        // tbl.specificType('ailment_id', 'integer ARRAY')
             
     })
     .createTable('ailments', tbl =>{
