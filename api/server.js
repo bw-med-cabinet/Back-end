@@ -24,5 +24,9 @@ server.get("/", (req, res) => {
   res.status(200).json({ api: "up and running" });
 });
 
+server.get('/api', (req, res)=>{
+  res.status(200).json({api: 'Api running, please access specific endpoints'})
+})
+
 
 module.exports = server;
