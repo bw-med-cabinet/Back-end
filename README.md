@@ -1,5 +1,6 @@
 # Med Cabinet Back-end API Information
 
+# API: https://marijuana-api.herokuapp.com/
 
 ## REGISTER AND LOGIN
 Type | Endpoint | What it does | Required
@@ -32,6 +33,7 @@ PUT    | /api/ailments/:id | updates specific ailment by id    |
 DELETE | /api/ailments/:id | deletes specific ailment by id    |     
 
 ## STRAINS
+#### strains are available as public info --> not behind restricted middleware
 Type | Endpoint | What it does | Required
 -------|--------------------|-----------------------------------|------------------------------------------------
 GET    | /api/strains       | returns a list of all strains     |  
