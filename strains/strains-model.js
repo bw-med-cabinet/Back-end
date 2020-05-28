@@ -5,11 +5,11 @@ module.exports = {
     getStrainsById,
     addStrain,
     deleteStrain,
-    //getAll
+    getAll
 }
-// function getAll(){
-//     return db('cannabis')
-// }
+function getAll(){
+    return db('strains')
+}
 
 function getStrains(){
     return db('strains')

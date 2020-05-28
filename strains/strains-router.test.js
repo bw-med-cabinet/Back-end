@@ -24,7 +24,7 @@ test('get /api/strains', async()=>{
     const res = await request (server)
         .get('/api/strains')
         .set('authorization', login.body.token)
-        expect(res.status).toBe(404)
+        expect(res.status).toBe(200)
     
 })
 
