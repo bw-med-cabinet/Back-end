@@ -16,7 +16,7 @@ router.get('/', (req, res)=>{
 })
 
 router.get('/:id', (req, res)=>{
-    Users.findBy(req.params.id)
+    Users.findUserId(req.params.id)
     .then(users =>{
         if(users){
             res.status(200).json(users)
@@ -49,11 +49,12 @@ router.post('/:id/ailments', (req, res)=>{
     .then(ailment =>{
         res.status(201).json({added: ailment})
     }).catch(err =>{
-        res.status(500).json({message: 'Failed to add new ailment'})
+
+        res.status(500).json({message:  err.message})
     })
 })
 
-router.put('/:id/ailments/:id', (req, res)=>{
+router.put('/:id/ailments', (req, res)=>{
     const {id} = req.params;
     const changes = req.body;
 
@@ -72,7 +73,7 @@ router.put('/:id/ailments/:id', (req, res)=>{
     })
 })
 
-router.delete('/:id/ailments/:id', (req, res) =>{
+router.delete('/:id/ailments', (req, res) =>{
     Users.deleteUsersAilment(req.params.id)
         .then(removed =>{
             if(removed > 0){

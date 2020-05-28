@@ -38,7 +38,7 @@ router.post('/login', (req, res) => {
     //.first()
     .then(([user]) =>{
 
-      console.log('FIND', user)
+      //console.log('FIND', user)
       if(user && bcryptjs.compareSync(password, user.password)){
         const token = generateToken(user)
         res.status(201).json({message: 'Welcome, have a seat your token will be with you soon', token})

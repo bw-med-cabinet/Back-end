@@ -57,7 +57,7 @@ router.put('/:id', (req, res)=>{
     })
 })
 
-router.delete('/id',(req, res)=>{
+router.delete('/:id',(req, res)=>{
     Ailments.deleteAilment(req.params.id)
         .then(removed =>{
             if(removed > 0){

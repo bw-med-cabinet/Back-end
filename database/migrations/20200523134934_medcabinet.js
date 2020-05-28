@@ -9,6 +9,9 @@ exports.up = function(knex) {
         tbl.string('password', 269)
             .notNullable()
         tbl.string('bio', 255)
+        tbl.string('fav_strains')
+        tbl.string('ailments')
+
         // tbl.specificType('ailment_id', 'integer ARRAY')
             
     })
@@ -26,10 +29,10 @@ exports.up = function(knex) {
     })
     .createTable('strains', tbl =>{
         tbl.increments()
-        tbl.string('strain_name').notNullable().unique()
+        tbl.string('strain').notNullable().unique()
         tbl.string('type').notNullable()
         tbl.string('description', 255).notNullable()
-        tbl.string('qualities', 128)
+        tbl.string('effects', 128)
         tbl.integer('rating')
         tbl.string('flavor', 128)
     })
@@ -64,7 +67,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-  .dropTableIfExists('recommendatoins')
+  .dropTableIfExists('recommendations')
   .dropTableIfExists('strains')
   .dropTableIfExists('ailments')
   .dropTableIfExists('users')

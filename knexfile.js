@@ -1,5 +1,7 @@
 // Update with your config settings.
-const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/medcabinet";
+const pgConnection = process.env.DATABASE_URL || "";
+require('dotenv').config();
+
 
 module.exports = {
 
@@ -20,6 +22,18 @@ module.exports = {
         conn.run('PRAGMA foreign_keys = ON', done);
       }
     }
+    // client: 'pg',
+    // connection: pgConnection,
+    // pool: {
+    //   min: 2,
+    //   max: 10
+    // },
+    // migrations: {
+    //   directory: './data/migrations'
+    // },
+    // seeds: {
+    //   directory: './data/seed'
+    // }
   },
   
   testing: {
@@ -60,10 +74,10 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: './data/migratoins'
+      directory: './database/migratoins'
     },
     seeds: {
-      directory: './data/seed'
+      directory: './database/seed'
     }
   }
 

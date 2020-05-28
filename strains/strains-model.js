@@ -4,17 +4,21 @@ module.exports = {
     getStrains,
     getStrainsById,
     addStrain,
-    deleteStrain
+    deleteStrain,
+    //getAll
 }
+// function getAll(){
+//     return db('cannabis')
+// }
 
 function getStrains(){
     return db('strains')
     .join('recommendations', 'strains.id', 'recommendations.strain_id')
     .join('ailments', 'ailments.id', 'recommendations.ailment_id')
     .join('users', 'users.id', 'recommendations.user_id')
-    .select('strains.name as Strain Name', 'ailments.name as Recommended For:', 'strains.type', 'strains.description','strains.flavor', 'strains.rating' )
+    .select('strains.strain as Strain Name', 'ailments.ailment_name as Recommended For:', 'strains.type', 'strains.description','strains.flavor', 'strains.rating' )
     
-    .orderBy('strains.name')
+    .orderBy('strains.strain')
     
 }
 
