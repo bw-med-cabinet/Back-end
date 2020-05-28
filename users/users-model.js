@@ -10,7 +10,8 @@ module.exports={
     updateUsersAilment,
     deleteUser,
     updateUser,
-    findUserId
+    findUserId,
+    getAllUsersAilments
 }
 
 function find(){
@@ -33,12 +34,22 @@ function findBy(filter){
     return db('users').where(filter)
 }
 
-function getUsersAilments(user_id){
+function getUsersAilments(user_id, ailment_id){
     return db('ailments')
-        .select( 'users.username as Username', 'ailments.ailment_name as User\'s Ailment', 'ailments.description as Ailment Description','ailments.id')
-        .join('users',  'ailments.user_id','users.id',)
-        .orderBy('ailments.id')
-        .where({user_id})
+        // .select()
+        //.select( 'users.username as Username', 'ailments.ailment_name as User\'s Ailment', 'ailments.description as Ailment Description','ailments.id')
+        //.join('users',  'ailments.user_id','users.id',)
+        //.orderBy('ailments.id')
+        .where({id : ailment_id, user_id: user_id })
+}
+
+function getAllUsersAilments(user_id){
+    return db('ailments')
+        // .select()
+        //.select( 'users.username as Username', 'ailments.ailment_name as User\'s Ailment', 'ailments.description as Ailment Description','ailments.id')
+        //.join('users',  'ailments.user_id','users.id',)
+        //.orderBy('ailments.id')
+        .where({user_id: user_id })
 }
 
 function addAilment (user_id){
@@ -61,9 +72,9 @@ function deleteUser(id){
     .del()
 }
 
-function updateUsersAilment(changes, id){
+function updateUsersAilment(changes, ailment_id){
         return db('ailments')
-                .where({id}).update(changes)
+                .where({id: ailment_id}).update(changes)
 }
 
 function updateUser(changes, id){

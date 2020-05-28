@@ -28,9 +28,24 @@ router.get('/:id', (req, res)=>{
     })
 })
 
+router.get('/:id/ailments/:ailment_id',(req, res)=>{
+    const {id, ailment_id} = req.params;
+    
+    Users.getUsersAilments(id, ailment_id)
+        .then(ailments =>{
+            if(ailments){
+                res.json(ailments)
+            }else{
+                res.status(404).json({message: 'Failed to retreive ailments for this user'})
+            }
+        }).catch(err =>{
+            res.status(500).json({message: err.message})
+        })
+})
+
 router.get('/:id/ailments',(req, res)=>{
     const {id} = req.params;
-    Users.getUsersAilments(id)
+    Users.getAllUsersAilments(id)
         .then(ailments =>{
             if(ailments){
                 res.json(ailments)
@@ -54,14 +69,16 @@ router.post('/:id/ailments', (req, res)=>{
     })
 })
 
-router.put('/:id/ailments', (req, res)=>{
-    const {id} = req.params;
+router.put('/:id/ailments/:ailment_id', (req, res)=>{
+    const {id, ailment_id} = req.params;
     const changes = req.body;
 
-    Users.findBy(id)
+    Users.findUserId(id)
+    
     .then(updates =>{
+        console.log(updates)
         if(updates){
-            Users.updateUsersAilment(changes, id)
+            Users.updateUsersAilment(changes, ailment_id)
                 .then(updatedAilment =>{
                     res.json(updatedAilment)
                 })
@@ -73,7 +90,7 @@ router.put('/:id/ailments', (req, res)=>{
     })
 })
 
-router.delete('/:id/ailments', (req, res) =>{
+router.delete('/:id/ailments/:id', (req, res) =>{
     Users.deleteUsersAilment(req.params.id)
         .then(removed =>{
             if(removed > 0){

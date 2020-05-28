@@ -3,25 +3,26 @@ const Strains = require('./strains-model')
 const restricted = require('../auth/restricted-model')
 
 
-//router.use(restricted)
-// router.get('/test', (req, res)=>{
-//     Strains.getAll()
-//         .then(strains =>{
-//             res.status(200).json(strains)
-//         }).catch(err =>{
-//             res.status(500).json({message: err.message})
-//         })
-// })
-
-router.get('/', (req,res)=>{
-    Strains.getStrains()
+// router.use(restricted)
+router.get('/', (req, res)=>{
+    Strains.getAll()
         .then(strains =>{
-            if(strains.length === 0){
-                res.status(404).json({message: 'there are no strains available currently'})
-            }else{
-            res.status(200).json(strains)}
+            res.status(200).json(strains)
+        }).catch(err =>{
+            res.status(500).json({message: err.message})
         })
 })
+
+// router.get('/', (req,res)=>{
+//     Strains.getStrains()
+//         .then(strains =>{
+//             console.log(strains)
+//             if(strains.length === 0){
+//                 res.status(404).json({message: 'there are no strains available currently'})
+//             }else{
+//             res.status(200).json(strains)}
+//         })
+// })
 
 router.get('/:id', (req, res)=>{
     Strains.getStrainsById(req.params.id)
