@@ -52,11 +52,12 @@ function getAllUsersAilments(user_id){
         .where({user_id: user_id })
 }
 
-function addAilment (user_id){
+function addAilment (ailmentInfo){
     return db('ailments')
-        .insert(user_id, 'id')
+        .insert(ailmentInfo, 'id')
         .then(ids =>{
-            return getUsersAilments(ids[0])
+            //console.log(ids)
+            return getUsersAilments(ailmentInfo.user_id, ids[0])
         })
 }
 

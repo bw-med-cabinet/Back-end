@@ -58,11 +58,14 @@ router.get('/:id/ailments',(req, res)=>{
 })
 
 router.post('/:id/ailments', (req, res)=>{
-    
-    const ailmentData = req.body
-    Users.addAilment(ailmentData)
-    .then(ailment =>{
-        res.status(201).json({added: ailment})
+   
+    const newAilmentInfo = {
+        ...req.body,
+        user_id: Number(req.params.id)
+        }
+    Users.addAilment(newAilmentInfo)
+    .then(([ailment]) =>{
+        res.status(201).json(ailment)
     }).catch(err =>{
 
         res.status(500).json({message:  err.message})

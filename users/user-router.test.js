@@ -64,13 +64,25 @@ test('post /api/users/:id/ailments', async()=>{
     .post('/api/auth/login')
     .send({username: 'testname', password: 'password'})
     const res = await request (server)
-        .post('/api/users/2/ailments')
+        .post('/api/users/2/ailments/')
         .set('authorization', login.body.token)
         .send({ailment_name: 'testname', description: 'description', user_id: 2})
         expect(res.status).toBe(201)
 })
 
-
+test('put /api/users/:id/ailments/:id' , async ()=>{
+    const register = await request(server)
+    .post('/api/auth/register')
+    .send({username: 'testname', password: 'password'})
+    const login = await request(server)
+    .post('/api/auth/login')
+    .send({username: 'testname', password: 'password'})
+    const res = await request (server)
+        .put('/api/users/1/ailments/1')
+        .set('authorization', login.body.token)
+        .send({ailment_name: 'test name', description: 'descript'})
+        expect(res.status).toBe(200)
+})
 
 
 
@@ -106,7 +118,7 @@ test('delete /api/users/:id/ailments', async ()=>{
         .send({ailment_name: 'testname', description: 'description', user_id: 2})
         expect(post.status).toBe(201)
     const res = await request (server)
-        .delete('/api/users/1/ailments')
+        .delete('/api/users/1/ailments/1')
         .set('authorization', login.body.token)
         
         expect(res.status).toBe(200)
