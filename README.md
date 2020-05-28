@@ -19,8 +19,8 @@ PUT         | /api/users/:id                 | allows specific user to be edited
 DELETE      | /api/users/:id                 | allws user to be delted                      |   
 GET         | /api/users/:id/ailments        | returns a specific users ailments            |  
 POST        | /api/users/:id/ailments        | allows user to add a new ailment             | requires __name__  __description__ and __user_id__  
-PUT         | /api/users/:id/ailments/    | allows user to edit their ailments           | requires __name__  __description__ and __user_id__  
-DELETE      | /api/users/:id/ailments/    | allows user to delete specific ailments      |  
+PUT         | /api/users/:id/ailments/:ailment_id    | allows user to edit their ailments           | requires __name__  __description__ and __user_id__  
+DELETE      | /api/users/:id/ailments/:ailment_id    | allows user to delete specific ailments      |  
 
 
 ## AILMENTS
