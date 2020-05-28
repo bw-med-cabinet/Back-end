@@ -4,6 +4,14 @@ const restricted = require('../auth/restricted-model')
 
 
 //router.use(restricted)
+// router.get('/test', (req, res)=>{
+//     Strains.getAll()
+//         .then(strains =>{
+//             res.status(200).json(strains)
+//         }).catch(err =>{
+//             res.status(500).json({message: err.message})
+//         })
+// })
 
 router.get('/', (req,res)=>{
     Strains.getStrains()

@@ -9,7 +9,7 @@ module.exports = {
     deleteAilment
 }
 function find(){
-    return db('ailments').select('name as Ailment\'s Name', 'description', 'user_id').orderBy('user_id')
+    return db('ailments').select('ailment_name as Ailment\'s Name', 'description', 'user_id').orderBy('user_id')
 }
 
 function add(ailment){

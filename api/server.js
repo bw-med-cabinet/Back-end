@@ -7,6 +7,7 @@ const ailmentRouter = require('../ailments/ailments-router')
 const strainsRouter = require('../strains/strains-router')
 const reccRouter = require('../recommendations/recc-router')
 
+
 const server = express();
 
 server.use(helmet())
@@ -18,6 +19,7 @@ server.use('/api/users', userRouter);
 server.use('/api/ailments', ailmentRouter);
 server.use('/api/strains', strainsRouter);
 server.use('/api/recommendations', reccRouter);
+
 //server.use()
 
 server.get("/", (req, res) => {
